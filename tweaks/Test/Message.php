@@ -1,5 +1,5 @@
-<?php namespace RockAdminTweaks\Test;
-class Message extends \RockAdminTweaks\Tweak {
+<?php namespace RockAdminTweaks;
+class Message extends Tweak {
 
   const message = 'test-message-message';
 

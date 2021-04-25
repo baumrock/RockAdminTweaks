@@ -1,7 +1,4 @@
-<?php namespace RockAdminTweaks\Misc;
-
-use RockAdminTweaks\Tweak;
-
+<?php namespace RockAdminTweaks;
 class SortTrash extends Tweak {
 
   public function info() {

@@ -10,19 +10,19 @@ Adding new CSS/JS tweaks is as simple as adding a file either in `site/assets/Ro
 
 **Adding PHP Tweaks**
 
-To add a tweak that does something on the server side or has advanced config options (more about that later) just add a new PHP tweak in one of the above mentiones folders. Note that you need to provide the correct namespace that is based on PSR-4: `/site/assets/RockAdminTweaks/Demo/Foo.php`
+To add a tweak that does something on the server side or has advanced config options (more about that later) just add a new PHP tweak in one of the above mentioned folders and add the `RockAdminTweaks` namespace:
 
 ```php
-<?php namespace RockAdminTweaks\Demo;
-class Foo extends \RockAdminTweaks\Tweak {
+<?php namespace RockAdminTweaks;
+class Foo extends Tweak {
 }
 ```
 
 That's it! You have created your first PHP Tweak! Of course this tweak does not do anything yet, so we add some magic:
 
 ```php
-<?php namespace RockAdminTweaks\Demo;
-class Foo extends \RockAdminTweaks\Tweak {
+<?php namespace RockAdminTweaks;
+class Foo extends Tweak {
 
   public function init() {
     $this->message('Foo tweak init!');

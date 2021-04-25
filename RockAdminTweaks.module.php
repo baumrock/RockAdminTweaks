@@ -108,12 +108,8 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule {
    * Load all tweaks
    */
   public function loadTweaks() {
-    $config = $this->wire->config;
     require_once(__DIR__."/Tweak.php");
     $this->tweaks = $this->wire(new WireArray());
-    foreach($this->dirs as $dir) {
-      $this->wire->classLoader->addNamespace("RockAdminTweaks", $dir);
-    }
     foreach($this->findFiles() as $file) {
       $tweak = $this->getTweak($file);
       if($this->tweaks->has($tweak)) continue;
@@ -152,9 +148,11 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule {
     $ext = pathinfo($file, PATHINFO_EXTENSION);
     $noExt = substr($file, 0, -strlen(".$ext"));
     $name = str_replace($this->dirs, "", $noExt);
+    $filename = pathinfo($file, PATHINFO_FILENAME);
     if($tweak = $this->tweaks->get($name)) return $tweak;
     if(is_file($noExt.".php")) {
-      $class = "RockAdminTweaks\\".str_replace("/", "\\", $name);
+      require_once($file);
+      $class = "RockAdminTweaks\\".str_replace("/", "\\", $filename);
       $tweak = new $class();
     }
     else $tweak = new Tweak();
