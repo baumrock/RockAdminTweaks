@@ -5,6 +5,7 @@ class SortTrash extends Tweak {
     return [
       'description' => 'Show recently trashed pages on top of the list',
       'icon' => 'fa-trash-o',
+      'notes' => 'See [issue #386](https://github.com/processwire/processwire-requests/issues/386)',
     ];
   }
 

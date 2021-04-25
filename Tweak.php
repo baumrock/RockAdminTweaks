@@ -26,6 +26,7 @@ class Tweak extends Wire {
     $fs = $this->wire(new InputfieldFieldset()); /** @var InputfieldFieldset $f */
     $fs->label = $this->getInfo('description');
     $fs->icon = $this->getInfo('icon');
+    $fs->notes = $this->getInfo('notes');
     $fs->add([
       'type' => 'checkbox',
       'entityEncodeLabel' => false,
@@ -36,7 +37,6 @@ class Tweak extends Wire {
     if($this->isReadonly()) {
       $fs->children()->last()->attr('disabled', 'disabled');
     }
-    $fs->notes = $this->url;
 
     // add config fields
     $wrapper = $this->wire(new InputfieldWrapper()); /** @var InputfieldWrapper $wrapper */
