@@ -1,5 +1,7 @@
 # RockAdminTweaks
 
+![img](https://i.imgur.com/MP9YH6i.png)
+
 ## Quickstart
 
 **Adding CSS/JS Tweaks**
