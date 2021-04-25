@@ -119,9 +119,9 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule {
   }
 
   /**
-  * Config inputfields
-  * @param InputfieldWrapper $inputfields
-  */
+   * Config inputfields
+   * @param InputfieldWrapper $inputfields
+   */
   public function getModuleConfigInputfields($inputfields) {
     // add fields for all tweaks
     foreach($this->array as $folder => $tweaks) {
