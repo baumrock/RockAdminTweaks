@@ -35,6 +35,7 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule {
   }
 
   public function init() {
+    $this->wire->set('rats', $this);
     $this->assets = $this->wire->config->paths->assets.$this->className."/";
     $this->dirs = [
       Paths::normalizeSeparators(__DIR__."/tweaks/"),
@@ -48,11 +49,22 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule {
     if($this->wire->page->template != 'admin') return;
 
     // trigger ready()
-    foreach($this->tweaks->find("enabled=1,hasReady=1") as $tweak) $tweak->ready();
+    foreach($this->tweaks->find("enabled=1,hasReady=1") as $tweak) {
+      $tweak->ready();
+    }
 
     // load styles
-    foreach($this->tweaks->find("ext=css") as $tweak) {
-      $this->wire->config->styles->add($tweak->url);
+    foreach($this->tweaks as $tweak) {
+      /** @var Tweak $tweak */
+      if(!$tweak->loadCSS($this->wire->page)) continue;
+      $this->wire->config->styles->add($tweak->url('css'));
+    }
+
+    // load scripts
+    foreach($this->tweaks as $tweak) {
+      /** @var Tweak $tweak */
+      if(!$tweak->loadJS($this->wire->page)) continue;
+      $this->wire->config->scripts->add($tweak->url('js'));
     }
   }
 
@@ -103,20 +115,8 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule {
       $this->wire->classLoader->addNamespace("RockAdminTweaks", $dir);
     }
     foreach($this->findFiles() as $file) {
-      $ext = pathinfo($file, PATHINFO_EXTENSION);
-      $name = substr(str_replace($this->dirs, "", $file), 0, -strlen($ext)-1);
-      if($ext == 'php') {
-        $class = "RockAdminTweaks\\".str_replace("/", "\\", $name);
-        $tweak = new $class();
-      }
-      else $tweak = new Tweak();
-      $tweak->name = $name;
-      $tweak->configName = $tweak->configName();
-      $tweak->enabled = $tweak->isEnabled();
-      $tweak->hasInit = method_exists($tweak, "init");
-      $tweak->hasReady = method_exists($tweak, "ready");
-      $tweak->path = $file;
-      $tweak->ext = $ext;
+      $tweak = $this->getTweak($file);
+      if($this->tweaks->has($tweak)) continue;
       $this->tweaks->add($tweak);
       $this->addToArray($tweak);
     }
@@ -132,13 +132,39 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule {
       $fs = $this->wire(new InputfieldFieldset()); /** @var InputfieldFieldset $f */
       $fs->label = $folder;
       foreach($tweaks as $tweak) {
-        if($tweak->ext !== 'php') continue;
         $fs->add($tweak->configWrapper());
       }
       $inputfields->add($fs);
     }
 
     return $inputfields;
+  }
+
+  /**
+   * Get tweak object from filename
+   * If a PHP file exists we load the dedicated PHP file
+   * Otherwise we load the default tweak
+   * @return Tweak|null
+   */
+  public function getTweak($file) {
+    if(!is_file($file)) return;
+    $config = $this->wire->config;
+    $ext = pathinfo($file, PATHINFO_EXTENSION);
+    $noExt = substr($file, 0, -strlen(".$ext"));
+    $name = str_replace($this->dirs, "", $noExt);
+    if($tweak = $this->tweaks->get($name)) return $tweak;
+    if(is_file($noExt.".php")) {
+      $class = "RockAdminTweaks\\".str_replace("/", "\\", $name);
+      $tweak = new $class();
+    }
+    else $tweak = new Tweak();
+    $tweak->name = $name;
+    $tweak->path = $noExt;
+    $tweak->configName = $tweak->configName();
+    $tweak->enabled = $tweak->isEnabled();
+    $tweak->hasInit = method_exists($tweak, "init");
+    $tweak->hasReady = method_exists($tweak, "ready");
+    return $tweak;
   }
 
   public function ___install() {

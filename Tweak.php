@@ -8,18 +8,7 @@ use ProcessWire\Wire;
 
 class Tweak extends Wire {
 
-  /** @var RockAdminTweaks $ */
-  public $rats;
-
-  public function __construct() {
-    $this->rats = $this->wire->modules->get("RockAdminTweaks");
-  }
-
   public function info() {}
-
-  public function ready() {
-    bd('default tweak ready', $this->name);
-  }
 
   /**
    * Return name of config property
@@ -44,7 +33,9 @@ class Tweak extends Wire {
       'name' => $this->configName,
       'checked' => $this->isEnabled() ? 'checked' : '',
     ]);
-    // bd($fs->children()->last()->attr('disabled', 'disabled'));
+    if($this->isReadonly()) {
+      $fs->children()->last()->attr('disabled', 'disabled');
+    }
     $fs->notes = $this->url;
 
     // add config fields
@@ -69,8 +60,10 @@ class Tweak extends Wire {
   public function getInfo($property) {
     $info = array_merge([
       'label' => $this->className,
-      'description' => $this->className,
-      'icon' => 'bolt',
+      'description' => $this->configName(),
+      'icon' => 'code',
+      'loadCSS' => true,
+      'loadJS' => true,
     ], $this->info() ?: []);
     if(!array_key_exists($property, $info)) return '';
     return $info[$property];
@@ -81,28 +74,60 @@ class Tweak extends Wire {
    * @return bool
    */
   public function isEnabled() {
-    return !!$this->rats->config($this->configName);
+    return !!$this->rats()->config($this->configName);
+  }
+
+  /**
+   * Is the checkbox for this tweak readonly?
+   * @return bool
+   */
+  public function isReadonly() {
+    return false;
+  }
+
+  /**
+   * Load css of this tweak?
+   * @return bool
+   */
+  public function loadCSS($page) {
+    if(!$this->isEnabled()) return false;
+    $load = $this->getInfo('loadCSS');
+    if(is_string($load)) $load = $page->matches($load);
+    return !!$load;
+  }
+
+  /**
+   * Load js of this tweak?
+   * @return bool
+   */
+  public function loadJS($page) {
+    if(!$this->isEnabled()) return false;
+    $load = $this->getInfo('loadJS');
+    if(is_string($load)) $load = $page->matches($load);
+    return !!$load;
+  }
+
+  public function rats(): RockAdminTweaks {
+    return $this->wire->modules->get("RockAdminTweaks");
   }
 
   /**
    * Get url of file
-   * @return string
+   * @return string|false
    */
   public function url($ext) {
     $config = $this->wire->config;
-    $file = substr($this->path, 0, -strlen($this->ext)-1).".$ext";
+    $file = $this->path.".$ext";
+    if(!is_file($file)) return false;
     $url = str_replace($config->paths->root, $config->urls->root, $file);
-    if(is_file($file)) $url .= "?m=".filemtime($file);
-    return $url;
+    return "$url?m=".filemtime($file);
   }
 
   public function __debugInfo() {
     return [
       'name' => $this->name,
-      'config' => $this->config,
+      'configName' => $this->configName(),
       'path' => $this->path,
-      'url' => $this->url,
-      'ext' => $this->ext,
     ];
   }
 }
