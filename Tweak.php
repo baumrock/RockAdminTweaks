@@ -1,5 +1,6 @@
 <?php namespace RockAdminTweaks;
 
+use ProcessWire\Inputfield;
 use ProcessWire\InputfieldFieldset;
 use ProcessWire\InputfieldWrapper;
 use ProcessWire\RockAdminTweaks;
@@ -43,6 +44,7 @@ class Tweak extends Wire {
       'name' => $this->configName,
       'checked' => $this->isEnabled() ? 'checked' : '',
     ]);
+    // bd($fs->children()->last()->attr('disabled', 'disabled'));
     $fs->notes = $this->url;
 
     // add config fields
