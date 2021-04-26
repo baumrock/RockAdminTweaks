@@ -1,4 +1,12 @@
-# RockAdminTweaks
+# RockAdminTweaks - RATs
+
+This module is similar to AOS and packs different tweaks for the PW admin into one module.
+
+Unlike AOS this module was built to make it very easy to add `tweaks` in a modular way. Every tweak can consist of either a `JS`, `CSS` or `PHP` file or any combination of those. Tweaks can be organised as you want in folders (at the moment nesting of those folders is not supported).
+
+If the tweaks shipped with this module are not enough for your needs then you can place your own tweaks in `/site/assets/RockAdminTweaks` and they will automatically be included and handled by RATs.
+
+## Preview
 
 ![img](https://i.imgur.com/MP9YH6i.png)
 
@@ -7,6 +15,20 @@
 **Adding CSS/JS Tweaks**
 
 Adding new CSS/JS tweaks is as simple as adding a file either in `site/assets/RockAdminTweaks` or in `site/modules/RockAdminTweaks/tweaks`. Once the file is added to your system the tweak will show up in the config of the module and you can enable or disable it there via a checkbox.
+
+Example JS tweak
+
+```js
+alert('I am a JS tweak');
+```
+
+Example CSS tweak
+
+```CSS
+div { border: 1px solid red; }
+```
+
+Have a look at the test tweaks here, that you can try out after installation: https://github.com/baumrock/RockAdminTweaks/tree/main/tweaks/Test
 
 **Adding PHP Tweaks**
 
