@@ -77,10 +77,10 @@ If you want to see a real world example see the simple `SortTrash` tweak: https:
 
 ![img](hr.svg)
 
-## Example of a more complex tweak
+## More complex tweaks
 
 Tweaks can be as complex as you can imagine and you can easily provide config settings to make your tweak dynamically configurable.
 
-See this example: https://github.com/baumrock/RockAdminTweaks/blob/main/tweaks/Test/Message.php
+See this simple example to get the concept: https://github.com/baumrock/RockAdminTweaks/blob/main/tweaks/Test/Message.php
 
 ![img](https://i.imgur.com/5fI7mr3.png)
