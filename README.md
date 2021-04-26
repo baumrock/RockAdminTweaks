@@ -2,13 +2,13 @@
 
 This module is similar to AOS and packs different tweaks for the PW admin into one module.
 
-## The Problem
+## Problem
 
 If you want to tweak the PW backend you have several options. One option is to use AOS which comes with lots of improvements but also comes with bloat and bugs and it is not actively maintained any more - that's why it is no option for me any more, as much as I enjoyed using it.
 
 On the other hand, packing every little tweak you want to apply to the PW backend into a separate module (which might be best solution from a technical point of view) is not easy for beginners and it is not practical as well for advanced users. RATs tries to fill this gap!
 
-## The Solution
+## Solution
 
 Unlike AOS this module was built to make it very easy to add `tweaks` in a modular way. Every tweak can consist of either a `JS`, `CSS` or `PHP` file or any combination of those. Tweaks can be organised as you want in folders (at the moment nesting of those folders is not supported).
 
