@@ -58,3 +58,5 @@ class Foo extends Tweak {
 ```
 
 As you can see the tweak supports PW's `init()` and `ready()` events. This means it is extremely easy to attach hooks and do really anything with a simple PHP tweak and it's also extremely easy to move them from one project to another but still keep the flexibility of enabling/disabling it per installation.
+
+If you want to see a real world example see the simple `SortTrash` tweak: https://github.com/baumrock/RockAdminTweaks/blob/main/tweaks/PageTree/SortTrash.php
