@@ -1,6 +1,6 @@
 ![img](logo.svg)
 
-This module is similar to AOS and packs different tweaks for the PW admin into one module.
+**This module is similar to AOS and packs different tweaks for the PW admin into one module.**
 
 ## Problem
 
