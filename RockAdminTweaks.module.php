@@ -28,7 +28,7 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule {
       'summary' => 'Tweaks for the ProcessWire admin',
       'autoload' => true,
       'singular' => true,
-      'icon' => 'bolt',
+      'icon' => 'magic',
       'requires' => [],
       'installs' => [],
     ];
