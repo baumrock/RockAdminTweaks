@@ -26,7 +26,7 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule {
       'title' => 'RockAdminTweaks',
       'version' => '0.0.1',
       'summary' => 'Tweaks for the ProcessWire admin',
-      'autoload' => true,
+      'autoload' => 'admin',
       'singular' => true,
       'icon' => 'magic',
       'requires' => [],
@@ -46,8 +46,6 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule {
   }
 
   public function ready() {
-    if($this->wire->page->template != 'admin') return;
-
     // trigger ready()
     foreach($this->tweaks->find("enabled=1,hasReady=1") as $tweak) {
       $tweak->ready();
