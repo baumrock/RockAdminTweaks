@@ -109,10 +109,15 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule {
     require_once(__DIR__."/Tweak.php");
     $this->tweaks = $this->wire(new WireArray());
     foreach($this->findFiles() as $file) {
-      $tweak = $this->getTweak($file);
-      if($this->tweaks->has($tweak)) continue;
-      $this->tweaks->add($tweak);
-      $this->addToArray($tweak);
+      try {
+        $tweak = $this->getTweak($file);
+        if($this->tweaks->has($tweak)) continue;
+        $this->tweaks->add($tweak);
+        $this->addToArray($tweak);
+      }
+      catch (\Throwable $e) {
+        $this->wire->log->save('RockAdminTweaks', $e->getMessage());
+      }
     }
   }
 
