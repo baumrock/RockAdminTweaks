@@ -2,6 +2,8 @@
 
 RockAdminTweaks is a module for ProcessWire that provides a collection of useful features and hacks, referred to as "tweaks", for the ProcessWire backend. These tweaks can be easily enabled or disabled via checkboxes in the module's configuration page.
 
+<img src=https://i.imgur.com/gYYBjoB.png>
+
 ### Features:
 - **Easy Customization**: Users can create their own tweaks by simply adding PHP, JS, or CSS files.
 - **Modular Design**: Each tweak is self-contained, making it easy to manage and configure.
