@@ -42,6 +42,7 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule
     $this->enabledTweaks = $this->wire->cache->get(self::cacheName) ?: [];
     foreach ($this->enabledTweaks as $key) {
       $tweak = $this->loadTweak($key);
+      if (!$tweak) continue;
       $this->tweaks->add($tweak);
       $tweak->init();
     }
@@ -104,12 +105,6 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule
     return "<i class='fa fa-info-circle uk-margin-small-left' title='$text' uk-tooltip></i>";
   }
 
-  public function ___install()
-  {
-    $this->init();
-    $this->wire->files->mkdir($this->tweakPathTemplates);
-  }
-
   public function isEnabled($key): bool
   {
     return in_array($key, $this->enabledTweaks);
@@ -131,7 +126,7 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule
       $fs->add([
         'type' => 'text',
         'name' => 'tgroup',
-        'label' => 'Group',
+        'label' => 'Group / Folder',
         'columnWidth' => 50,
       ]);
       $fs->add([
@@ -145,6 +140,23 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule
         'type' => 'markup',
         'value' => 'This is only allowed if $config->debug = true;',
       ]);
+    }
+
+    // create tweak
+    $tgroup = ucfirst((string)$this->wire->input->post->tgroup);
+    $tname = ucfirst((string)$this->wire->input->post->tname);
+    if ($tgroup && $tname) {
+      $path = $this->tweakPathTemplates . $tgroup;
+      $newFile = "$path/$tname.php";
+      if (is_file($newFile)) {
+        $this->error("$newFile already exists");
+      } else {
+        $this->wire->files->mkdir($path, true);
+        $content = $this->wire->files->fileGetContents(__DIR__ . "/tweak.txt");
+        $content = str_replace('{name}', $tname, $content);
+        $this->wire->files->filePutContents($newFile, $content);
+        $this->message("Created tweak at $newFile");
+      }
     }
   }
 

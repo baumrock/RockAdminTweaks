@@ -1,0 +1,21 @@
+<?php
+
+namespace RockAdminTweaks;
+
+class {name} extends Tweak
+{
+  public function info(): array
+  {
+    return [
+      'description' => 'Put your tweak description here',
+    ];
+  }
+
+  public function init(): void
+  {
+  }
+
+  public function ready(): void
+  {
+  }
+}
