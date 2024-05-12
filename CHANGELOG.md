@@ -1,3 +1,10 @@
+## [1.3.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.2.0...v1.3.0) (2024-05-12)
+
+
+### Features
+
+* add loadCSS() method ([12a8ffc](https://github.com/baumrock/RockAdminTweaks/commit/12a8ffcdc1b421091584adf5f5358815a5a0b4b8))
+
 ## [1.2.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.1.0...v1.2.0) (2024-05-12)
 
 
