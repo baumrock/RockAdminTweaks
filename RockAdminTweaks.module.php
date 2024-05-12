@@ -83,6 +83,7 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule
         $arr["$folder:$name"] = $file;
       }
     }
+    ksort($arr);
     $this->tweakArray = $arr;
   }
 
