@@ -47,6 +47,13 @@ abstract class Tweak extends Wire
   }
 
 
+  public final function loadCSS(): void
+  {
+    $jsfile = substr($this->file, 0, -3) . "css";
+    $url = wire()->config->versionUrl($this->pathToUrl($jsfile));
+    wire()->config->styles->add($url);
+  }
+
   public final function loadJS(): void
   {
     $jsfile = substr($this->file, 0, -3) . "js";

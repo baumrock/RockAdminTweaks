@@ -2,6 +2,8 @@
 
 Tweaks can load JS and CSS assets. As you might want to load assets based on some conditions we do not automatically load them. But it's only one line of code to do so and it will automatically take care of cache busting:
 
+## JS
+
 ```php
 // the tweak CopyFieldNames.php will load
 // the js file CopyFieldNames.js
@@ -29,3 +31,7 @@ public function init(): void
   wire()->addHookBefore('ProcessController::execute', $this, 'loadJS');
 }
 ```
+
+## CSS
+
+For CSS the principle is exactly the same, just use `loadCSS` instead of `loadJS`.
