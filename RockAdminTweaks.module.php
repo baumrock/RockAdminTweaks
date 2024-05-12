@@ -1,4 +1,6 @@
-<?php namespace ProcessWire;
+<?php
+
+namespace ProcessWire;
 
 use RockAdminTweaks\Tweak;
 
@@ -7,165 +9,188 @@ use RockAdminTweaks\Tweak;
  * @license Licensed under MIT
  * @link https://www.baumrock.com
  */
-class RockAdminTweaks extends WireData implements Module, ConfigurableModule {
+class RockAdminTweaks extends WireData implements Module, ConfigurableModule
+{
+  const cacheName = "RockAdminTweaks";
 
-  /** @var array */
-  private $array = [];
+  private $enabledTweaks = [];
 
-  /** @var string */
-  public $assets;
+  public $tweakPathTemplates;
+  public $tweakPathModules;
 
-  /** @var array */
-  public $dirs;
+  public $tweakArray = [];
 
-  /** @var WireArray */
   public $tweaks;
 
-  public static function getModuleInfo() {
-    return [
-      'title' => 'RockAdminTweaks',
-      'version' => '0.0.1',
-      'summary' => 'Tweaks for the ProcessWire admin',
-      'autoload' => true,
-      'singular' => true,
-      'icon' => 'magic',
-      'requires' => [],
-      'installs' => [],
-    ];
+  public function init(): void
+  {
+    $this->tweaks = new WireArray();
+    $this->wire->classLoader->addNamespace("RockAdminTweaks", __DIR__ . "/classes");
+    $this->tweakPathTemplates = $this->wire->config->paths->templates . $this->className . "/";
+    $this->tweakPathModules = __DIR__ . "/tweaks/";
+    $this->loadTweakArray();
+    $this->loadEnabledTweaks();
   }
 
-  public function init() {
-    $this->wire->set('rats', $this);
-    $this->assets = $this->wire->config->paths->assets.$this->className."/";
-    $this->dirs = [
-      Paths::normalizeSeparators(__DIR__."/tweaks/"),
-      $this->assets,
-    ];
-    $this->loadTweaks();
-    foreach($this->tweaks->find("enabled=1,hasInit=1") as $tweak) $tweak->init();
+  public function ready(): void
+  {
+    foreach ($this->tweaks as $tweak) $tweak->ready();
   }
 
-  public function ready() {
-    if($this->wire->page->template != 'admin') return;
-
-    // trigger ready()
-    foreach($this->tweaks->find("enabled=1,hasReady=1") as $tweak) {
-      $tweak->ready();
-    }
-
-    // load styles
-    foreach($this->tweaks as $tweak) {
-      /** @var Tweak $tweak */
-      if(!$tweak->loadCSS($this->wire->page)) continue;
-      $this->wire->config->styles->add($tweak->url('css'));
-    }
-
-    // load scripts
-    foreach($this->tweaks as $tweak) {
-      /** @var Tweak $tweak */
-      if(!$tweak->loadJS($this->wire->page)) continue;
-      $this->wire->config->scripts->add($tweak->url('js'));
-    }
-  }
-
-  /**
-   * Add tweak to grouped array of tweaks
-   * @return array
-   */
-  public function addToArray($tweak) {
-    $array = $this->array;
-    $parts = explode("/", $tweak->name);
-    if(count($parts) === 1) $folder = 'Global';
-    else $folder = $parts[0];
-    $array[$folder][] = $tweak;
-    $this->array = $array;
-  }
-
-  /**
-   * Get config property
-   * @return mixed
-   */
-  public function config($property) {
-    return $this->$property;
-  }
-
-  /**
-   * Find tweak files
-   * @return array
-   */
-  public function findFiles($ext = null) {
-    $options = [];
-    if(is_string($ext)) $options = ['extensions'=>[$ext]];
-    $files = [];
-    foreach($this->dirs as $dir) {
-      $found = $this->wire->files->find($dir, $options);
-      $files = array_merge($files, $found);
-    }
-    return $files;
-  }
-
-  /**
-   * Load all tweaks
-   */
-  public function loadTweaks() {
-    require_once(__DIR__."/Tweak.php");
-    $this->tweaks = $this->wire(new WireArray());
-    foreach($this->findFiles() as $file) {
-      $tweak = $this->getTweak($file);
-      if($this->tweaks->has($tweak)) continue;
+  private function loadEnabledTweaks(): void
+  {
+    $this->enabledTweaks = $this->wire->cache->get(self::cacheName) ?: [];
+    foreach ($this->enabledTweaks as $key) {
+      $tweak = $this->loadTweak($key);
       $this->tweaks->add($tweak);
-      $this->addToArray($tweak);
+      $tweak->init();
     }
   }
+
+  private function loadTweak($key)
+  {
+    if (!array_key_exists($key, $this->tweakArray)) return;
+    $file = $this->tweakArray[$key];
+    if (!is_file($file)) return;
+    require_once $file;
+    try {
+      $parts = explode(":", $key);
+      $tweakName = $parts[1];
+      $class = "\\RockAdminTweaks\\$tweakName";
+      $tweak = new $class();
+      $tweak->file = $file;
+      $tweak->name = $tweakName;
+      return $tweak;
+    } catch (\Throwable $th) {
+      $this->error($th->getMessage());
+    }
+  }
+
+  private function loadTweakArray(): void
+  {
+    $arr = [];
+    foreach ([
+      $this->tweakPathModules,
+      $this->tweakPathTemplates,
+    ] as $dir) {
+      $files = $this->wire->files->find($dir, [
+        'extensions' => ['php'],
+      ]);
+      foreach ($files as $file) {
+        $folder = basename(dirname($file));
+        $name = substr(basename($file), 0, -4);
+        $arr["$folder:$name"] = $file;
+      }
+    }
+    $this->tweakArray = $arr;
+  }
+
+  /* ##### module methods ##### */
 
   /**
    * Config inputfields
    * @param InputfieldWrapper $inputfields
    */
-  public function getModuleConfigInputfields($inputfields) {
-    // add fields for all tweaks
-    foreach($this->array as $folder => $tweaks) {
-      $fs = $this->wire(new InputfieldFieldset()); /** @var InputfieldFieldset $f */
-      $fs->label = $folder;
-      foreach($tweaks as $tweak) {
-        $fs->add($tweak->configWrapper());
-      }
-      $inputfields->add($fs);
-    }
-
+  public function getModuleConfigInputfields($inputfields)
+  {
+    $this->moduleConfigAdd($inputfields);
+    $this->moduleConfigTweaks($inputfields);
     return $inputfields;
   }
 
-  /**
-   * Get tweak object from filename
-   * If a PHP file exists we load the dedicated PHP file
-   * Otherwise we load the default tweak
-   * @return Tweak|null
-   */
-  public function getTweak($file) {
-    if(!is_file($file)) return;
-    $config = $this->wire->config;
-    $ext = pathinfo($file, PATHINFO_EXTENSION);
-    $noExt = substr($file, 0, -strlen(".$ext"));
-    $name = str_replace($this->dirs, "", $noExt);
-    $filename = pathinfo($file, PATHINFO_FILENAME);
-    if($tweak = $this->tweaks->get($name)) return $tweak;
-    if(is_file($noExt.".php")) {
-      require_once($file);
-      $class = "RockAdminTweaks\\".str_replace("/", "\\", $filename);
-      $tweak = new $class();
-    }
-    else $tweak = new Tweak();
-    $tweak->name = $name;
-    $tweak->path = $noExt;
-    $tweak->configName = $tweak->configName();
-    $tweak->enabled = $tweak->isEnabled();
-    $tweak->hasInit = method_exists($tweak, "init");
-    $tweak->hasReady = method_exists($tweak, "ready");
-    return $tweak;
+  private function infoIcon($text): string
+  {
+    $text = $this->wire->sanitizer->entities($text);
+    return "<i class='fa fa-info-circle uk-margin-small-left' title='$text' uk-tooltip></i>";
   }
 
-  public function ___install() {
-    $this->wire->files->mkdir($this->wire->config->paths->assets.$this->className);
+  public function ___install()
+  {
+    $this->init();
+    $this->wire->files->mkdir($this->tweakPathTemplates);
+  }
+
+  public function isEnabled($key): bool
+  {
+    return in_array($key, $this->enabledTweaks);
+  }
+
+  private function moduleConfigAdd(&$inputfields): void
+  {
+    $path = $this->tweakPathTemplates;
+
+    $fs = new InputfieldFieldset();
+    $fs->label = 'Create a new Tweak';
+    $fs->icon = 'plus';
+    $fs->collapsed = Inputfield::collapsedYes;
+    $fs->notes = "The tweak will be created in $path";
+    if (!is_writable($path)) $fs->notes .= "\nWARNING: Folder is not writable!";
+    $inputfields->add($fs);
+
+    if ($this->wire->config->debug) {
+      $fs->add([
+        'type' => 'text',
+        'name' => 'tgroup',
+        'label' => 'Group',
+        'columnWidth' => 50,
+      ]);
+      $fs->add([
+        'type' => 'text',
+        'name' => 'tname',
+        'label' => 'Name',
+        'columnWidth' => 50,
+      ]);
+    } else {
+      $fs->add([
+        'type' => 'markup',
+        'value' => 'This is only allowed if $config->debug = true;',
+      ]);
+    }
+  }
+
+  private function moduleConfigTweaks(&$inputfields): void
+  {
+    // save enabled tweaks to cache
+    if ($this->wire->input->post->submit_save_module) {
+      $enabledTweaks = $this->wire->input->post->tweaks;
+      $this->wire->cache->save(self::cacheName, $enabledTweaks);
+    }
+
+    $fs = new InputfieldFieldset();
+    $fs->label = 'Tweaks';
+    $fs->icon = 'magic';
+    $inputfields->add($fs);
+
+    $oldFolder = false;
+    foreach ($this->tweakArray as $key => $path) {
+      $parts = explode(":", $key);
+      $folder = $parts[0];
+      $tweakName = $parts[1];
+
+      // create new folder-field
+      if ($oldFolder !== $folder) {
+        $f = new InputfieldCheckboxes();
+        $f->name = 'tweaks';
+        $f->label = $folder;
+        $f->icon = 'folder-open-o';
+        $f->entityEncodeText = false;
+        $fs->add($f);
+      }
+
+      // load tweak from file
+      $tweak = $this->loadTweak($key);
+      $desc = $tweak->info->description;
+      if ($desc) $desc = " - $desc";
+
+      // debug
+      // bd($tweak);
+
+      // add option as checkbox
+      $f->addOption($key, "<strong>$tweakName</strong>$desc", [
+        'checked' => $this->isEnabled($key) ? 'checked' : '',
+      ]);
+
+      $oldFolder = $folder;
+    }
   }
 }
