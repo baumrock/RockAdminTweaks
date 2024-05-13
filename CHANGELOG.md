@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/baumrock/RockAdminTweaks/compare/v1.4.0...v1.4.1) (2024-05-13)
+
+
+### Bug Fixes
+
+* rename pageadd folder to general ([19cee0b](https://github.com/baumrock/RockAdminTweaks/commit/19cee0b1c4ed3a3dd887ab9e5d57d8dc47d957fb))
+
 ## [1.4.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.3.0...v1.4.0) (2024-05-13)
 
 
@@ -26,15 +33,4 @@
 
 * add ImageDownload tweak ([dfa8eec](https://github.com/baumrock/RockAdminTweaks/commit/dfa8eec17831db971177c13ebe22d0199bb7c08e))
 * add support for create tweak gui + docs ([7d22ef6](https://github.com/baumrock/RockAdminTweaks/commit/7d22ef6d6f0c8e60d8d04cc5deef94a800e4624d))
-
-## [1.0.0](https://github.com/baumrock/RockAdminTweaks/compare/d8798bdb15e0f2cde89b946dc18c352a213de544...v1.0.0) (2024-05-12)
-
-
-### ⚠ BREAKING CHANGES
-
-* refactor, new version
-
-### Features
-
-* refactor, new version ([d8798bd](https://github.com/baumrock/RockAdminTweaks/commit/d8798bdb15e0f2cde89b946dc18c352a213de544))
 
