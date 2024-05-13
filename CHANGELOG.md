@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/baumrock/RockAdminTweaks/compare/v1.4.2...v1.4.3) (2024-05-13)
+
+
+### Bug Fixes
+
+* [#3](https://github.com/baumrock/RockAdminTweaks/issues/3) ([6e60dac](https://github.com/baumrock/RockAdminTweaks/commit/6e60dac142414a2007ff5b75188d348b1abd85d2))
+
 ## [1.4.2](https://github.com/baumrock/RockAdminTweaks/compare/v1.4.1...v1.4.2) (2024-05-13)
 
 
@@ -25,11 +32,4 @@
 ### Features
 
 * add loadCSS() method ([12a8ffc](https://github.com/baumrock/RockAdminTweaks/commit/12a8ffcdc1b421091584adf5f5358815a5a0b4b8))
-
-## [1.2.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.1.0...v1.2.0) (2024-05-12)
-
-
-### Features
-
-* add copyfieldnames tweak ([0335c48](https://github.com/baumrock/RockAdminTweaks/commit/0335c4816c3b6e0f272db3010bc801218d5e1117))
 
