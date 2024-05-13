@@ -1,3 +1,10 @@
+## [1.4.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.3.0...v1.4.0) (2024-05-13)
+
+
+### Features
+
+* add quickadd tweak ([8a83ba5](https://github.com/baumrock/RockAdminTweaks/commit/8a83ba51c270dd29a48d159be58bfb9e76848973))
+
 ## [1.3.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.2.0...v1.3.0) (2024-05-12)
 
 
