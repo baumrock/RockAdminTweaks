@@ -1,6 +1,6 @@
 /* Originally by tpr in the AdminOnSteroids module */
 /* Ported to RockAdminTweaks by netcarver */
-$(document).on("hover", ".PageListItem", function () {
+$(document).on("mouseover", ".PageListItem", function () {
   var $extrasToggle = $(this).find(".clickExtras"),
     $templateEditAction = $(this).find(
       ".PageListActionEdit ~ .PageListActionEdit"
