@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/baumrock/RockAdminTweaks/compare/v1.4.1...v1.4.2) (2024-05-13)
+
+
+### Bug Fixes
+
+* fix select() deprecated [#2](https://github.com/baumrock/RockAdminTweaks/issues/2) ([6410b8f](https://github.com/baumrock/RockAdminTweaks/commit/6410b8ffd1af6b085947fb2a16a4cb7bedf5740f))
+
 ## [1.4.1](https://github.com/baumrock/RockAdminTweaks/compare/v1.4.0...v1.4.1) (2024-05-13)
 
 
@@ -25,12 +32,4 @@
 ### Features
 
 * add copyfieldnames tweak ([0335c48](https://github.com/baumrock/RockAdminTweaks/commit/0335c4816c3b6e0f272db3010bc801218d5e1117))
-
-## [1.1.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.0.0...v1.1.0) (2024-05-12)
-
-
-### Features
-
-* add ImageDownload tweak ([dfa8eec](https://github.com/baumrock/RockAdminTweaks/commit/dfa8eec17831db971177c13ebe22d0199bb7c08e))
-* add support for create tweak gui + docs ([7d22ef6](https://github.com/baumrock/RockAdminTweaks/commit/7d22ef6d6f0c8e60d8d04cc5deef94a800e4624d))
 
