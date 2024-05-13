@@ -3,7 +3,7 @@ $(document).ready(function () {
   function copyToClipboard(string) {
     const $temp = $('<input type="text" value="' + string + '">');
     $("body").append($temp);
-    $temp.select();
+    $temp[0].select();
     document.execCommand("copy");
     $temp.remove();
   }
