@@ -1,0 +1,25 @@
+.aos-edit-prev,
+.aos-edit-next {
+    padding: 0 0.3rem;
+    position: relative;
+    top: 1px;
+}
+
+.aos-edit-prev:not(:hover),
+.aos-edit-next:not(:hover) {
+    color: #ccc;
+}
+
+.aos-edit-prev i,
+.aos-edit-next i {
+    font-size: 17px !important;
+}
+
+html:not(.AdminThemeDefault) .aos-edit-prev i,
+html:not(.AdminThemeDefault) .aos-edit-next i {
+    font-size: 27px !important;
+}
+
+.aos-edit-prev {
+    margin-left: 0.6rem;
+}
