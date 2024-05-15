@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
             '" title="' +
             PrevNextLinks.prev.title +
             '"' +
-            ' class="aos-edit-prev"><i class="' +
+            ' class="aos-edit-prev" uk-tooltip><i class="' +
             icon +
             '"></i></a>'
         );
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
             '" title="' +
             PrevNextLinks.next.title +
             '"' +
-            ' class="aos-edit-next"><i class="' +
+            ' class="aos-edit-next" uk-tooltip><i class="' +
             icon +
             '"></i></a>'
         );
