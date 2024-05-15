@@ -1,3 +1,16 @@
+## [1.5.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.4.3...v1.5.0) (2024-05-15)
+
+
+### Features
+
+* Add multiple tweaks. ([41b710f](https://github.com/baumrock/RockAdminTweaks/commit/41b710f1af8db2438e549222eff6a7a537115343))
+* add uk-tooltip for prev/next link ([3290fa3](https://github.com/baumrock/RockAdminTweaks/commit/3290fa3dc3fd3b6dba0a72f667f69e30c805a15d))
+
+
+### Bug Fixes
+
+* Use semantically correct variable name ([69d2951](https://github.com/baumrock/RockAdminTweaks/commit/69d29517bcce07fdbe72eb152e703ed4964a2911))
+
 ## [1.4.3](https://github.com/baumrock/RockAdminTweaks/compare/v1.4.2...v1.4.3) (2024-05-13)
 
 
@@ -25,11 +38,4 @@
 ### Features
 
 * add quickadd tweak ([8a83ba5](https://github.com/baumrock/RockAdminTweaks/commit/8a83ba51c270dd29a48d159be58bfb9e76848973))
-
-## [1.3.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.2.0...v1.3.0) (2024-05-12)
-
-
-### Features
-
-* add loadCSS() method ([12a8ffc](https://github.com/baumrock/RockAdminTweaks/commit/12a8ffcdc1b421091584adf5f5358815a5a0b4b8))
 
