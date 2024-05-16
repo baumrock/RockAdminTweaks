@@ -1,0 +1,61 @@
+.aos_col_left,
+.aos_col_right {
+    width: 67%;
+    float: left;
+    clear: none !important;
+    margin-top: 0 !important;
+
+    >.InputfieldContent {
+        background: transparent;
+    }
+}
+
+.aos_col_right {
+    width: 33%;
+    margin-left: -1px !important;
+}
+
+/*hide aos_column_break field*/
+#ProcessPageEditContent #wrap_Inputfield_aos_column_break {
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+.aos_no-inputfield-padding > .InputfieldContent {
+    padding: 0;
+}
+
+/*remove line under wiretabs (uikit)*/
+#PageEditTabs.WireTabs.uk-tab::before {
+    display: none;
+}
+
+
+html .Inputfields {
+    zoom: 1;
+}
+html .Inputfields:before, html .Inputfields:after {
+    content: " ";
+    display: block;
+    height: 0;
+    overflow: hidden;
+}
+html .Inputfields:after {
+    clear: both;
+}
+html .gutter {
+    cursor: ew-resize;
+    float: left;
+    min-height: 200px;
+    position: relative;
+    z-index: 300;
+}
+html .gutter:active:before {
+    content: "";
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: transparent;
+}
