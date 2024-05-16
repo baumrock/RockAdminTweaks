@@ -1,3 +1,10 @@
+## [1.6.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.5.0...v1.6.0) (2024-05-16)
+
+
+### Features
+
+* new folder structure as suggested by adrian ([a46ab0b](https://github.com/baumrock/RockAdminTweaks/commit/a46ab0b2419694437d56cac8c5a052da51478c33))
+
 ## [1.5.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.4.3...v1.5.0) (2024-05-15)
 
 
@@ -31,11 +38,4 @@
 ### Bug Fixes
 
 * rename pageadd folder to general ([19cee0b](https://github.com/baumrock/RockAdminTweaks/commit/19cee0b1c4ed3a3dd887ab9e5d57d8dc47d957fb))
-
-## [1.4.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.3.0...v1.4.0) (2024-05-13)
-
-
-### Features
-
-* add quickadd tweak ([8a83ba5](https://github.com/baumrock/RockAdminTweaks/commit/8a83ba51c270dd29a48d159be58bfb9e76848973))
 
