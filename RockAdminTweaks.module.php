@@ -78,8 +78,8 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule
         'extensions' => ['php'],
       ]);
       foreach ($files as $file) {
-        $folder = basename(dirname($file));
         $name = substr(basename($file), 0, -4);
+        $folder = basename(dirname(dirname($file)));
         $arr["$folder:$name"] = $file;
       }
     }
@@ -147,7 +147,7 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule
     $tgroup = ucfirst((string)$this->wire->input->post->tgroup);
     $tname = ucfirst((string)$this->wire->input->post->tname);
     if ($tgroup && $tname) {
-      $path = $this->tweakPathTemplates . $tgroup;
+      $path = $this->tweakPathTemplates . "$tgroup/$tname";
       $newFile = "$path/$tname.php";
       if (is_file($newFile)) {
         $this->error("$newFile already exists");
