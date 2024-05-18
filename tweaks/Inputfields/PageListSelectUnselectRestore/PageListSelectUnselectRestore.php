@@ -19,12 +19,9 @@ class PageListSelectUnselectRestore extends Tweak
 
     public function ready(): void
     {
-
-        $this->loadJS();
-        $this->loadCSS();
-
+        $this->addHookBefore('InputfieldPageListSelect::renderReady', $this, 'loadJS');
+        $this->addHookBefore('InputfieldPageListSelect::renderReady', $this, 'loadCSS');
         $this->addHookAfter('InputfieldPageListSelect::render', $this, 'addPageListUnselectButtons');
-
     }
 
     public function addPageListUnselectButtons($event)
@@ -46,5 +43,4 @@ class PageListSelectUnselectRestore extends Tweak
 
         $event->return = $restoreButton . $clearButton . $event->return;
     }
-
 }
