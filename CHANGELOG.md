@@ -1,3 +1,16 @@
+## [1.7.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.6.0...v1.7.0) (2024-05-18)
+
+
+### Features
+
+* add assets only when necessary ([4b39445](https://github.com/baumrock/RockAdminTweaks/commit/4b39445264bde5d56e957cee6ff25a94f2855c5f))
+* add editorconfig file ([73af92b](https://github.com/baumrock/RockAdminTweaks/commit/73af92be8291fc24381d8583d555fb325ee8fb9b))
+
+
+### Bug Fixes
+
+* store enabled tweaks in module config, not in cache ([d432c49](https://github.com/baumrock/RockAdminTweaks/commit/d432c49fc30b6cd4fbf6f46367db2a1334607ed6))
+
 ## [1.6.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.5.0...v1.6.0) (2024-05-16)
 
 
@@ -31,11 +44,4 @@
 ### Bug Fixes
 
 * fix select() deprecated [#2](https://github.com/baumrock/RockAdminTweaks/issues/2) ([6410b8f](https://github.com/baumrock/RockAdminTweaks/commit/6410b8ffd1af6b085947fb2a16a4cb7bedf5740f))
-
-## [1.4.1](https://github.com/baumrock/RockAdminTweaks/compare/v1.4.0...v1.4.1) (2024-05-13)
-
-
-### Bug Fixes
-
-* rename pageadd folder to general ([19cee0b](https://github.com/baumrock/RockAdminTweaks/commit/19cee0b1c4ed3a3dd887ab9e5d57d8dc47d957fb))
 
