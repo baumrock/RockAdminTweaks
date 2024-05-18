@@ -39,7 +39,7 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule
 
   private function loadEnabledTweaks(): void
   {
-    $this->enabledTweaks = $this->wire->cache->get(self::cacheName) ?: [];
+    $this->enabledTweaks = $this->wire->modules->getConfig($this, 'enabledTweaks') ?: [];
     foreach ($this->enabledTweaks as $key) {
       $tweak = $this->loadTweak($key);
       if (!$tweak) continue;
@@ -166,7 +166,7 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule
     // save enabled tweaks to cache
     if ($this->wire->input->post->submit_save_module) {
       $enabledTweaks = $this->wire->input->post->tweaks;
-      $this->wire->cache->save(self::cacheName, $enabledTweaks);
+      $this->wire->modules->saveConfig($this, ['enabledTweaks' => $enabledTweaks]);
     }
 
     $fs = new InputfieldFieldset();
