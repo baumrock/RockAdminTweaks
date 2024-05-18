@@ -1,3 +1,10 @@
+## [1.8.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.7.2...v1.8.0) (2024-05-18)
+
+
+### Features
+
+* add more options for info() array ([f50cf02](https://github.com/baumrock/RockAdminTweaks/commit/f50cf02a7907fd6009ea795d2d7484e7a18bd4da))
+
 ## [1.7.2](https://github.com/baumrock/RockAdminTweaks/compare/v1.7.1...v1.7.2) (2024-05-18)
 
 
@@ -31,17 +38,4 @@
 ### Features
 
 * new folder structure as suggested by adrian ([a46ab0b](https://github.com/baumrock/RockAdminTweaks/commit/a46ab0b2419694437d56cac8c5a052da51478c33))
-
-## [1.5.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.4.3...v1.5.0) (2024-05-15)
-
-
-### Features
-
-* Add multiple tweaks. ([41b710f](https://github.com/baumrock/RockAdminTweaks/commit/41b710f1af8db2438e549222eff6a7a537115343))
-* add uk-tooltip for prev/next link ([3290fa3](https://github.com/baumrock/RockAdminTweaks/commit/3290fa3dc3fd3b6dba0a72f667f69e30c805a15d))
-
-
-### Bug Fixes
-
-* Use semantically correct variable name ([69d2951](https://github.com/baumrock/RockAdminTweaks/commit/69d29517bcce07fdbe72eb152e703ed4964a2911))
 
