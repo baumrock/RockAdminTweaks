@@ -16,10 +16,10 @@ abstract class Tweak extends Wire
   public $file;
 
   /**
-   * Tweak Name
+   * Id for use in dom markup (folder-name)
    * @var string
    */
-  public $name;
+  public $id;
 
   /**
    * WireData object of info() array
@@ -27,10 +27,24 @@ abstract class Tweak extends Wire
    */
   public $info;
 
-  public function __construct()
+  /**
+   * Tweak key (Folder:Name)
+   * @var string
+   */
+  public $key;
+
+  /**
+   * Tweak Name
+   * @var string
+   */
+  public $name;
+
+  public function __construct($key)
   {
     $this->info = new WireData();
     $this->info->setArray($this->info());
+    $this->key = $key;
+    $this->id = wire()->sanitizer->pageNameUTF8($key);
   }
 
   public function info(): array
@@ -74,6 +88,8 @@ abstract class Tweak extends Wire
   {
     return [
       'name' => $this->name,
+      'key' => $this->key,
+      'id' => $this->id,
       'file' => $this->file,
     ];
   }

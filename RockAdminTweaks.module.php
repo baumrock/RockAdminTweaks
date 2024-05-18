@@ -58,7 +58,7 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule
       $parts = explode(":", $key);
       $tweakName = $parts[1];
       $class = "\\RockAdminTweaks\\$tweakName";
-      $tweak = new $class();
+      $tweak = new $class($key);
       $tweak->file = $file;
       $tweak->name = $tweakName;
       return $tweak;
@@ -98,12 +98,6 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule
     $this->moduleConfigAdd($inputfields);
     $this->moduleConfigTweaks($inputfields);
     return $inputfields;
-  }
-
-  private function infoIcon($text): string
-  {
-    $text = $this->wire->sanitizer->entities($text);
-    return "<i class='fa fa-info-circle uk-margin-small-left' title='$text' uk-tooltip></i>";
   }
 
   public function isEnabled($key): bool
@@ -170,8 +164,10 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule
     }
 
     $fs = new InputfieldFieldset();
+    $fs->name = 'tweaks';
     $fs->label = 'Tweaks';
     $fs->icon = 'magic';
+    $fs->prependMarkup = '<style>#Inputfield_tweaks label i.fa { margin-left: 5px; }</style>';
     $inputfields->add($fs);
 
     $oldFolder = false;
@@ -192,14 +188,44 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule
 
       // load tweak from file
       $tweak = $this->loadTweak($key);
-      $desc = $tweak->info->description;
-      if ($desc) $desc = " - $desc";
+      $info = $tweak->info;
+      $desc = $info->description;
+      if ($info->help) {
+        $help = wire()->sanitizer->entitiesMarkdown($info->help, true);
+        $by = $info->author ? "<small style='font-size:10px'>by {$info->author}</small>" : '';
+        $desc .= "<a href=#modal-{$tweak->id} uk-toggle title='Full description' uk-tooltip>"
+          . "<i class='fa fa-life-ring'></i>"
+          . "</a>"
+          . "<div id='modal-{$tweak->id}' uk-modal>
+            <div class='uk-modal-dialog uk-modal-body'>
+              <button class='uk-modal-close-default' type='button' uk-close></button>
+              <h2 class='uk-modal-title uk-margin-remove'>{$tweak->name} $by</h2>
+              <h3 class='uk-margin-small-top'>{$info->description}</h3>
+              $help
+            </div>
+          </div>";
+      }
+      if ($info->author) {
+        $desc .= "<a href='{$info->authorUrl}' target=_blank title='Author: {$info->author}' uk-tooltip>"
+          . "<i class='fa fa-user-circle-o'></i>"
+          . "</a>";
+      }
+      if ($info->maintainer) {
+        $desc .= "<a href='{$info->maintainerUrl}' target=_blank title='Maintainer: {$info->maintainer}' uk-tooltip>"
+          . "<i class='fa fa-user-circle'></i>"
+          . "</a>";
+      }
+      if ($info->infoLink) {
+        $desc .= "<a href='{$info->infoLink}' target=_blank title='External Info-Link' uk-tooltip>"
+          . '<i class="fa fa-info-circle"></i>'
+          . '</a>';
+      }
 
       // debug
       // bd($tweak);
 
       // add option as checkbox
-      $f->addOption($key, "<strong>$tweakName</strong>$desc", [
+      $f->addOption($key, "<strong>$tweakName</strong> - $desc", [
         'checked' => $this->isEnabled($key) ? 'checked' : '',
       ]);
 

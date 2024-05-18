@@ -7,7 +7,13 @@ class {name} extends Tweak
   public function info(): array
   {
     return [
-      'description' => 'Put your tweak description here',
+      'description' => 'Put your short tweak description here',
+      // 'help' => 'Optional longer description - opens in a **modal** and supports [markdown](/).',
+      // 'author' => 'Bernhard Baumrock',
+      // 'authorUrl' => 'https://processwire.com/talk/profile/2137-bernhard/',
+      // 'maintainer' => 'If different from author',
+      // 'maintainerUrl' => 'If different from author',
+      // 'infoLink' => 'External info link, eg forum thread',
     ];
   }
 

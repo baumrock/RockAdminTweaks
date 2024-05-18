@@ -12,8 +12,11 @@ class ImageDownload extends Tweak
   public function info(): array
   {
     return [
-      'description' => 'Adds a download icon to image fields. '
-        . '<a href=https://processwire.com/talk/topic/28089-weekly-update-%E2%80%93%C2%A027-january-2023/ target=_blank><i class="fa fa-info-circle"></i></a>',
+      'description' => 'Adds a download icon to image fields.',
+      'help' => 'Optional longer description - opens in a **modal** and supports [markdown](/).',
+      'author' => 'Bernhard Baumrock',
+      'authorUrl' => 'https://processwire.com/talk/profile/2137-bernhard/',
+      'infoLink' => 'https://processwire.com/talk/topic/28089--',
     ];
   }
 

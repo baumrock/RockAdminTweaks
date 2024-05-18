@@ -9,8 +9,8 @@ class CopyFieldNames extends Tweak
   public function info(): array
   {
     return [
-      'description' => "Copy field names on shift-click by SuperUsers "
-        . "<a href=https://processwire.com/talk/topic/29071-using-javascript-to-copy-page-ids-from-page-list-and-field-nameslabels-from-inputfields/ target=_blank><i class='fa fa-info-circle'></i></a>",
+      'description' => 'Copy field names on shift-click by SuperUsers',
+      'infoLink' => 'https://processwire.com/talk/topic/29071--',
     ];
   }
 
