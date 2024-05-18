@@ -1,9 +1,21 @@
-html:not(.pListShowActions) #content .PageList .PageListItem:hover .PageListActions {
-  display: inline-block !important;
+html:not(.pListShowActions)
+  #content
+  .PageList
+  .PageListItem:hover
+  .PageListActions {
+  display: inline-block;
 }
-html:not(.pListShowActions) #content .PageList .PageListItemOpen .PageListActions {
-  display: none !important;
+html:not(.pListShowActions)
+  #content
+  .PageList
+  .PageListItemOpen
+  .PageListActions {
+  display: none;
 }
-html:not(.pListShowActions) #content .PageList .PageListItemOpen:hover .PageListActions {
-  display: inline-block !important;
+html:not(.pListShowActions)
+  #content
+  .PageList
+  .PageListItemOpen:hover
+  .PageListActions {
+  display: inline-block;
 }
