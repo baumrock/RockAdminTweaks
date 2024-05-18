@@ -1,0 +1,54 @@
+.aos_pagelist_unselect {
+    margin-top: 1px !important;
+    padding: 0 !important;
+    text-align: center;
+    border: none !important;
+    transition-duration: 0.1s !important;
+    max-width: 60px;
+    line-height: 1 !important;
+}
+.aos_pagelist_unselect i {
+    padding: 3px 5px !important;
+    display: inline-block;
+}
+.aos_pagelist_unselect, .aos_pagelist_unselect:hover {
+    padding: 0 !important;
+}
+.aos_pagelist_unselect.empty, .aos_pagelist_unselect.initial {
+    pointer-events: none;
+    opacity: 0.3;
+    filter: saturate(0);
+    border-color: inherit;
+}
+.aos_pagelist_unselect.clear {
+    background-color: transparent !important;
+    margin-left: -3px;
+    margin-right: 5px;
+    float: left;
+    color: #8d939e !important;
+}
+.aos_pagelist_unselect.clear:hover {
+    color: #8d939e !important;
+    background-color: transparent !important;
+}
+.aos_pagelist_unselect.clear:hover i {
+    transform: scale(1.2);
+    transform-origin: center;
+}
+.aos_pagelist_unselect.clear:hover ~ .PageListRoot .PageListSelectName {
+    text-decoration: line-through;
+}
+.aos_pagelist_unselect.clear ~ .PageListRoot {
+    float: left;
+    width: calc(100% - 54px);
+    margin-bottom: 1rem;
+}
+.aos_pagelist_unselect.clear ~ .notes {
+    width: 100%;
+    clear: both;
+}
+.aos_pagelist_unselect.restore {
+    position: relative;
+    top: -3px;
+    margin-right: 0;
+}
