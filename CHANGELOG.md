@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/baumrock/RockAdminTweaks/compare/v1.7.1...v1.7.2) (2024-05-18)
+
+
+### Bug Fixes
+
+* load assets only when needed ([1c32703](https://github.com/baumrock/RockAdminTweaks/commit/1c327039f22138725c2dfdc9e659525f2f59011b))
+
 ## [1.7.1](https://github.com/baumrock/RockAdminTweaks/compare/v1.7.0...v1.7.1) (2024-05-18)
 
 
@@ -37,11 +44,4 @@
 ### Bug Fixes
 
 * Use semantically correct variable name ([69d2951](https://github.com/baumrock/RockAdminTweaks/commit/69d29517bcce07fdbe72eb152e703ed4964a2911))
-
-## [1.4.3](https://github.com/baumrock/RockAdminTweaks/compare/v1.4.2...v1.4.3) (2024-05-13)
-
-
-### Bug Fixes
-
-* [#3](https://github.com/baumrock/RockAdminTweaks/issues/3) ([6e60dac](https://github.com/baumrock/RockAdminTweaks/commit/6e60dac142414a2007ff5b75188d348b1abd85d2))
 
