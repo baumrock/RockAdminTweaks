@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/baumrock/RockAdminTweaks/compare/v1.7.0...v1.7.1) (2024-05-18)
+
+
+### Bug Fixes
+
+* remove important statements ([65b7208](https://github.com/baumrock/RockAdminTweaks/commit/65b7208154777ab2c0bef6b59008ba362fde9dfe))
+
 ## [1.7.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.6.0...v1.7.0) (2024-05-18)
 
 
@@ -37,11 +44,4 @@
 ### Bug Fixes
 
 * [#3](https://github.com/baumrock/RockAdminTweaks/issues/3) ([6e60dac](https://github.com/baumrock/RockAdminTweaks/commit/6e60dac142414a2007ff5b75188d348b1abd85d2))
-
-## [1.4.2](https://github.com/baumrock/RockAdminTweaks/compare/v1.4.1...v1.4.2) (2024-05-13)
-
-
-### Bug Fixes
-
-* fix select() deprecated [#2](https://github.com/baumrock/RockAdminTweaks/issues/2) ([6410b8f](https://github.com/baumrock/RockAdminTweaks/commit/6410b8ffd1af6b085947fb2a16a4cb7bedf5740f))
 
