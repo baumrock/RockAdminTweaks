@@ -1,3 +1,15 @@
+## [1.9.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.8.1...v1.9.0) (2024-05-19)
+
+
+### Features
+
+* add cache buster for pathToUrl() method ([cc5ab2f](https://github.com/baumrock/RockAdminTweaks/commit/cc5ab2fc62634f485c002267d4c356265e040da2))
+
+
+### Bug Fixes
+
+* css style adding wrong margin to header icons ([63b4244](https://github.com/baumrock/RockAdminTweaks/commit/63b4244a2cb3183befd4fe507d91be9112957cbc))
+
 ## [1.8.1](https://github.com/baumrock/RockAdminTweaks/compare/v1.8.0...v1.8.1) (2024-05-19)
 
 
@@ -25,17 +37,4 @@
 ### Bug Fixes
 
 * remove important statements ([65b7208](https://github.com/baumrock/RockAdminTweaks/commit/65b7208154777ab2c0bef6b59008ba362fde9dfe))
-
-## [1.7.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.6.0...v1.7.0) (2024-05-18)
-
-
-### Features
-
-* add assets only when necessary ([4b39445](https://github.com/baumrock/RockAdminTweaks/commit/4b39445264bde5d56e957cee6ff25a94f2855c5f))
-* add editorconfig file ([73af92b](https://github.com/baumrock/RockAdminTweaks/commit/73af92be8291fc24381d8583d555fb325ee8fb9b))
-
-
-### Bug Fixes
-
-* store enabled tweaks in module config, not in cache ([d432c49](https://github.com/baumrock/RockAdminTweaks/commit/d432c49fc30b6cd4fbf6f46367db2a1334607ed6))
 
