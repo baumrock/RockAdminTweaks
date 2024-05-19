@@ -167,7 +167,7 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule
     $fs->name = 'tweaks';
     $fs->label = 'Tweaks';
     $fs->icon = 'magic';
-    $fs->prependMarkup = '<style>#Inputfield_tweaks label i.fa { margin-left: 5px; }</style>';
+    $fs->prependMarkup = '<style>#Inputfield_tweaks label:not(.InputfieldHeader) i.fa { margin-left: 5px; }</style>';
     $inputfields->add($fs);
 
     $oldFolder = false;
