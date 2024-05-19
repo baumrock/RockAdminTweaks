@@ -4,6 +4,7 @@ namespace RockAdminTweaks;
 
 use ProcessWire\Wire;
 use ProcessWire\WireData;
+use ProcessWire\WireException;
 
 use function ProcessWire\wire;
 
@@ -75,13 +76,27 @@ abstract class Tweak extends Wire
     wire()->config->scripts->add($url);
   }
 
-  public function pathToUrl($path): string
+  /**
+   * Convert path to url and optionally add cache busting string
+   * @param mixed $path
+   * @param bool $nocache
+   * @return string
+   */
+  public function pathToUrl($path, $nocache = false): string
   {
-    return str_replace(
+    $url = str_replace(
       wire()->config->paths->root,
       wire()->config->urls->root,
       $path
     );
+    if ($nocache) {
+      try {
+        return wire()->config->versionUrl($url);
+      } catch (\Throwable $th) {
+        $this->log($th->getMessage());
+      }
+    }
+    return $url;
   }
 
   public function __debugInfo()
