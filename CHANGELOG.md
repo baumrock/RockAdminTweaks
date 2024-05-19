@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/baumrock/RockAdminTweaks/compare/v1.8.0...v1.8.1) (2024-05-19)
+
+
+### Bug Fixes
+
+* remove select2 zip ([ae01959](https://github.com/baumrock/RockAdminTweaks/commit/ae01959f5a04add3314cdd2905a8f616abde9ca0))
+
 ## [1.8.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.7.2...v1.8.0) (2024-05-18)
 
 
@@ -31,11 +38,4 @@
 ### Bug Fixes
 
 * store enabled tweaks in module config, not in cache ([d432c49](https://github.com/baumrock/RockAdminTweaks/commit/d432c49fc30b6cd4fbf6f46367db2a1334607ed6))
-
-## [1.6.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.5.0...v1.6.0) (2024-05-16)
-
-
-### Features
-
-* new folder structure as suggested by adrian ([a46ab0b](https://github.com/baumrock/RockAdminTweaks/commit/a46ab0b2419694437d56cac8c5a052da51478c33))
 
