@@ -2,9 +2,9 @@
 
 namespace RockAdminTweaks;
 
+use ProcessWire\Paths;
 use ProcessWire\Wire;
 use ProcessWire\WireData;
-use ProcessWire\WireException;
 
 use function ProcessWire\wire;
 
@@ -84,6 +84,7 @@ abstract class Tweak extends Wire
    */
   public function pathToUrl($path, $nocache = false): string
   {
+    $path = Paths::normalizeSeparators($path);
     $url = str_replace(
       wire()->config->paths->root,
       wire()->config->urls->root,
