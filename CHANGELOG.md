@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/baumrock/RockAdminTweaks/compare/v1.9.0...v1.9.1) (2024-05-21)
+
+
+### Bug Fixes
+
+* [#17](https://github.com/baumrock/RockAdminTweaks/issues/17) ([74f5ad2](https://github.com/baumrock/RockAdminTweaks/commit/74f5ad2071e57134772d09bb5082810a10ae5a91))
+
 ## [1.9.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.8.1...v1.9.0) (2024-05-19)
 
 
@@ -30,11 +37,4 @@
 ### Bug Fixes
 
 * load assets only when needed ([1c32703](https://github.com/baumrock/RockAdminTweaks/commit/1c327039f22138725c2dfdc9e659525f2f59011b))
-
-## [1.7.1](https://github.com/baumrock/RockAdminTweaks/compare/v1.7.0...v1.7.1) (2024-05-18)
-
-
-### Bug Fixes
-
-* remove important statements ([65b7208](https://github.com/baumrock/RockAdminTweaks/commit/65b7208154777ab2c0bef6b59008ba362fde9dfe))
 
