@@ -16,7 +16,7 @@ class CheckAllCheckboxes extends Tweak
 
     public function ready(): void
     {
-        $this->wire->addHookAfter('InputfieldCheckboxes::renderReady', $this, 'loadJS');
-        $this->wire->addHookAfter('InputfieldCheckboxes::renderReady', $this, 'loadCSS');
+        $this->loadJS();
+        $this->loadCSS();
     }
 }
