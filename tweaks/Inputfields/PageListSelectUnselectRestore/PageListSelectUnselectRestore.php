@@ -37,7 +37,7 @@ class PageListSelectUnselectRestore extends Tweak
             $originalID = ($field->value && $this->pages->get($field->value)) ? $this->pages->get($field->value)->id : '';
         }
 
-        $restoreTitleTag = strlen($originalTitle) ? 'title="' . \ProcessWire\__('Restore', __FILE__) . ' &quot;' . $originalTitle . '&quot;"' : '';
+        $restoreTitleTag = $originalTitle && strlen($originalTitle) ? 'title="' . \ProcessWire\__('Restore', __FILE__) . ' &quot;' . $originalTitle . '&quot;"' : '';
 
         $clearButton = '<button class="aos_pagelist_unselect clear ui-button ' . ($field->value ? '' : 'empty') . '" title="' . \ProcessWire\__('Clear', __FILE__) . '"><i class="fa fa-times-circle"></i></button>';
 
