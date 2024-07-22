@@ -1,3 +1,12 @@
+## [1.9.3](https://github.com/baumrock/RockAdminTweaks/compare/v1.9.2...v1.9.3) (2024-07-22)
+
+
+### Bug Fixes
+
+* add check for originalTitle before strlen() ([b8382ae](https://github.com/baumrock/RockAdminTweaks/commit/b8382ae271bbeb6d6f2181f66557d3842a9ec9d6))
+* quickadd causing error when creating new users ([f794d6b](https://github.com/baumrock/RockAdminTweaks/commit/f794d6bd03a80ff0924c3d16f38dbcf91df4ac53))
+* restore original version ([96a74d1](https://github.com/baumrock/RockAdminTweaks/commit/96a74d1b9876b1369a25034c5219975df077b6fe))
+
 ## [1.9.2](https://github.com/baumrock/RockAdminTweaks/compare/v1.9.1...v1.9.2) (2024-05-24)
 
 
@@ -30,11 +39,4 @@
 ### Bug Fixes
 
 * remove select2 zip ([ae01959](https://github.com/baumrock/RockAdminTweaks/commit/ae01959f5a04add3314cdd2905a8f616abde9ca0))
-
-## [1.8.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.7.2...v1.8.0) (2024-05-18)
-
-
-### Features
-
-* add more options for info() array ([f50cf02](https://github.com/baumrock/RockAdminTweaks/commit/f50cf02a7907fd6009ea795d2d7484e7a18bd4da))
 
