@@ -20,6 +20,8 @@ class QuickAdd extends Tweak
 
   public function skipAdd(HookEvent $event)
   {
+    // this prevents the hook to run on ProcessUser
+    if ($event->process != 'ProcessPageAdd') return;
     $templates = $event->process->getAllowedTemplates();
     if (count($templates) !== 1) return;
     foreach ($templates as $k => $tpl) {
