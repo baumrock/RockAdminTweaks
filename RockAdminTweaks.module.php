@@ -70,10 +70,12 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule
   private function loadTweakArray(): void
   {
     $arr = [];
-    foreach ([
-      $this->tweakPathModules,
-      $this->tweakPathTemplates,
-    ] as $dir) {
+    foreach (
+      [
+        $this->tweakPathModules,
+        $this->tweakPathTemplates,
+      ] as $dir
+    ) {
       $files = $this->wire->files->find($dir, [
         'extensions' => ['php'],
       ]);
@@ -96,6 +98,7 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule
   public function getModuleConfigInputfields($inputfields)
   {
     $this->moduleConfigAdd($inputfields);
+    $this->showEnabledTweaks($inputfields);
     $this->moduleConfigTweaks($inputfields);
     return $inputfields;
   }
@@ -114,7 +117,7 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule
     $fs->icon = 'plus';
     $fs->collapsed = Inputfield::collapsedYes;
     $fs->notes = "The tweak will be created in $path";
-    if (!is_writable($path)) $fs->notes .= "\nWARNING: Folder is not writable!";
+    if (!is_writable($path)) $fs->notes .= "\nWARNING: Folder is not writable or does not exist!";
     $inputfields->add($fs);
 
     if ($this->wire->config->debug) {
@@ -231,5 +234,26 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule
 
       $oldFolder = $folder;
     }
+  }
+
+  private function showEnabledTweaks($inputfields): void
+  {
+    $lines = [];
+    $lines[] = "rockmigrations()->setModuleConfig('RockAdminTweaks', [";
+    $lines[] = "  'enabledTweaks' => [";
+    foreach ($this->enabledTweaks as $tweak) {
+      $lines[] = "    '$tweak',";
+    }
+    $lines[] = "  ],";
+    $lines[] = "]);";
+    $markup = "<pre class=uk-margin-remove>" . implode("\n", $lines) . "</pre>";
+    $inputfields->add([
+      'type' => 'markup',
+      'label' => 'RockMigrations Code',
+      'value' => $markup,
+      'collapsed' => Inputfield::collapsedYes,
+      'icon' => 'code',
+      'description' => 'If you have multiple environments you can use RockMigrations to enable/disable tweaks identically and automatically across all environments:',
+    ]);
   }
 }
