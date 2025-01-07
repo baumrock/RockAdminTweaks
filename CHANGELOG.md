@@ -1,3 +1,10 @@
+## [1.10.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.9.3...v1.10.0) (2025-01-07)
+
+
+### Features
+
+* add tweak to add modal param to pagelist links ([46871fe](https://github.com/baumrock/RockAdminTweaks/commit/46871fe5880aba630d6c5f5a073ee68066f6d3ef))
+
 ## [1.9.3](https://github.com/baumrock/RockAdminTweaks/compare/v1.9.2...v1.9.3) (2024-07-22)
 
 
@@ -32,11 +39,4 @@
 ### Bug Fixes
 
 * css style adding wrong margin to header icons ([63b4244](https://github.com/baumrock/RockAdminTweaks/commit/63b4244a2cb3183befd4fe507d91be9112957cbc))
-
-## [1.8.1](https://github.com/baumrock/RockAdminTweaks/compare/v1.8.0...v1.8.1) (2024-05-19)
-
-
-### Bug Fixes
-
-* remove select2 zip ([ae01959](https://github.com/baumrock/RockAdminTweaks/commit/ae01959f5a04add3314cdd2905a8f616abde9ca0))
 
