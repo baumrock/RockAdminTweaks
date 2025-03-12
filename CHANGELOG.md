@@ -1,3 +1,10 @@
+## [1.11.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.10.0...v1.11.0) (2025-03-12)
+
+
+### Features
+
+* add tweak to enable all languages ([f2a62c6](https://github.com/baumrock/RockAdminTweaks/commit/f2a62c61c4a76f9bb490a83aee43447bc512ccba))
+
 ## [1.10.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.9.3...v1.10.0) (2025-01-07)
 
 
@@ -27,16 +34,4 @@
 ### Bug Fixes
 
 * [#17](https://github.com/baumrock/RockAdminTweaks/issues/17) ([74f5ad2](https://github.com/baumrock/RockAdminTweaks/commit/74f5ad2071e57134772d09bb5082810a10ae5a91))
-
-## [1.9.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.8.1...v1.9.0) (2024-05-19)
-
-
-### Features
-
-* add cache buster for pathToUrl() method ([cc5ab2f](https://github.com/baumrock/RockAdminTweaks/commit/cc5ab2fc62634f485c002267d4c356265e040da2))
-
-
-### Bug Fixes
-
-* css style adding wrong margin to header icons ([63b4244](https://github.com/baumrock/RockAdminTweaks/commit/63b4244a2cb3183befd4fe507d91be9112957cbc))
 
