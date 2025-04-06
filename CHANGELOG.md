@@ -1,3 +1,10 @@
+## [1.12.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.11.0...v1.12.0) (2025-04-06)
+
+
+### Features
+
+* new tweak to remove variations to force recreating them ([5389583](https://github.com/baumrock/RockAdminTweaks/commit/538958331545c8898403fb7bb8d32d4adb0c74ad))
+
 ## [1.11.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.10.0...v1.11.0) (2025-03-12)
 
 
@@ -27,11 +34,4 @@
 ### Bug Fixes
 
 * revert loading assets via hook ([1512a07](https://github.com/baumrock/RockAdminTweaks/commit/1512a074377327651921af7aedebc10b08b41544))
-
-## [1.9.1](https://github.com/baumrock/RockAdminTweaks/compare/v1.9.0...v1.9.1) (2024-05-21)
-
-
-### Bug Fixes
-
-* [#17](https://github.com/baumrock/RockAdminTweaks/issues/17) ([74f5ad2](https://github.com/baumrock/RockAdminTweaks/commit/74f5ad2071e57134772d09bb5082810a10ae5a91))
 
