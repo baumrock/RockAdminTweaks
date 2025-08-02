@@ -1,74 +1,85 @@
-.aos_hasTooltip .title, .InputfieldCheckbox .InputfieldContent>label {
-    position: relative;
+.aos_hasTooltip .title,
+.InputfieldCheckbox .InputfieldContent > label {
+  position: relative;
 }
-.aos_hasTooltip .title, .InputfieldCheckbox label {
-    display: inline-block;
+.aos_hasTooltip .title,
+.InputfieldCheckbox label {
+  display: inline-block;
 }
-.aos_hasTooltip .title:hover .aos_EditField, .InputfieldCheckbox label:hover .aos_EditField {
-    display: inline-block;
-    visibility: visible;
-    transform: scale(1);
-    opacity: 1;
-    transition: 0.07s all 1s;
+.aos_hasTooltip .title:hover .aos_EditField,
+.InputfieldCheckbox label:hover .aos_EditField {
+  display: inline-block;
+  visibility: visible;
+  transform: scale(1);
+  opacity: 1;
+  transition: 0.07s all 1s;
 }
-.aos_hasTooltip .title .aos_EditField, .InputfieldCheckbox label .aos_EditField {
-    font-style: normal;
-    visibility: hidden;
-    transform: scale(0);
-    opacity: 0;
-    position: absolute;
-    left: 0;
-    bottom: 100%;
-    font-weight: normal !important;
-    background: #1C2836;
-    color: rgba(255, 255, 255, 0.84) !important;
-    margin: 0 0 8px -4px;
-    font-size: 13px;
-    padding: 5px 10px 4px !important;
-    line-height: 1.5;
-    z-index: 110000;
-    backface-visibility: hidden;
-    transition: 0.2s opacity;
-    white-space: nowrap;
+.aos_hasTooltip .title .aos_EditField,
+.InputfieldCheckbox label .aos_EditField {
+  font-style: normal;
+  visibility: hidden;
+  transform: scale(0);
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  font-weight: normal !important;
+  background: #1c2836;
+  color: rgba(255, 255, 255, 0.84) !important;
+  margin: 0 0 8px -4px;
+  font-size: 13px;
+  padding: 5px 10px 4px !important;
+  line-height: 1.5;
+  z-index: 110000;
+  backface-visibility: hidden;
+  transition: 0.2s opacity;
+  white-space: nowrap;
 }
-.aos_hasTooltip .title .aos_EditField:hover, .InputfieldCheckbox label .aos_EditField:hover {
-    transition-delay: 0s !important;
-    background: #28394e !important;
-    color: #fff !important;
-    text-decoration: underline;
+.aos_hasTooltip .title .aos_EditField:hover,
+.InputfieldCheckbox label .aos_EditField:hover {
+  transition-delay: 0s !important;
+  background: #28394e !important;
+  color: #fff !important;
+  text-decoration: underline;
 }
-.aos_hasTooltip .title .aos_EditField:hover i, .InputfieldCheckbox label .aos_EditField:hover i {
-    opacity: 1;
+.aos_hasTooltip .title .aos_EditField:hover i,
+.InputfieldCheckbox label .aos_EditField:hover i {
+  opacity: 1;
 }
-.aos_hasTooltip .title .aos_EditField:hover:before, .InputfieldCheckbox label .aos_EditField:hover:before {
-    border-top-color: #28394e;
+.aos_hasTooltip .title .aos_EditField:hover:before,
+.InputfieldCheckbox label .aos_EditField:hover:before {
+  border-top-color: #28394e;
 }
-.aos_hasTooltip .title .aos_EditField i, .InputfieldCheckbox label .aos_EditField i {
-    margin-left: 8px;
-    font-size: 12px !important;
-    opacity: 0.84;
+.aos_hasTooltip .title .aos_EditField i,
+.InputfieldCheckbox label .aos_EditField i {
+  margin-left: 8px;
+  font-size: 12px !important;
+  opacity: 0.84;
 }
-.aos_hasTooltip .title .aos_EditField:before, .InputfieldCheckbox label .aos_EditField:before {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 10px;
-    border: 6px solid transparent;
-    border-top-color: #1C2836;
+.aos_hasTooltip .title .aos_EditField:before,
+.InputfieldCheckbox label .aos_EditField:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 10px;
+  border: 6px solid transparent;
+  border-top-color: #1c2836;
 }
-.aos_hasTooltip .title .aos_EditField:after, .InputfieldCheckbox label .aos_EditField:after {
-    content: "";
-    height: 12px;
-    background: transparent;
-    width: 133%;
-    display: block;
-    position: absolute;
-    top: 100%;
-    left: 0;
+.aos_hasTooltip .title .aos_EditField:after,
+.InputfieldCheckbox label .aos_EditField:after {
+  content: "";
+  height: 12px;
+  background: transparent;
+  width: 133%;
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
 }
-.aos_hasTooltip .title .aos_EditField:hover, .InputfieldCheckbox label .aos_EditField:hover {
-    cursor: pointer;
+.aos_hasTooltip .title .aos_EditField:hover,
+.InputfieldCheckbox label .aos_EditField:hover {
+  cursor: pointer;
 }
 .aos_hasTooltip .InputfieldRepeaterItem:hover .InputfieldContent {
-    overflow: visible !important;
+  overflow: visible !important;
 }
