@@ -1,3 +1,15 @@
+## [1.13.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.12.0...v1.13.0) (2025-08-02)
+
+
+### Features
+
+* add FakeFavicon tweak ([36a0be8](https://github.com/baumrock/RockAdminTweaks/commit/36a0be89d61fde997f3754d127c3d4b5b1cdb272))
+
+
+### Bug Fixes
+
+* adjust bottom setting for new admin theme [#18](https://github.com/baumrock/RockAdminTweaks/issues/18) ([b9b52e3](https://github.com/baumrock/RockAdminTweaks/commit/b9b52e3a8ae8e48dfb5c3cf596ced8132f24da1e))
+
 ## [1.12.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.11.0...v1.12.0) (2025-04-06)
 
 
@@ -27,11 +39,4 @@
 * add check for originalTitle before strlen() ([b8382ae](https://github.com/baumrock/RockAdminTweaks/commit/b8382ae271bbeb6d6f2181f66557d3842a9ec9d6))
 * quickadd causing error when creating new users ([f794d6b](https://github.com/baumrock/RockAdminTweaks/commit/f794d6bd03a80ff0924c3d16f38dbcf91df4ac53))
 * restore original version ([96a74d1](https://github.com/baumrock/RockAdminTweaks/commit/96a74d1b9876b1369a25034c5219975df077b6fe))
-
-## [1.9.2](https://github.com/baumrock/RockAdminTweaks/compare/v1.9.1...v1.9.2) (2024-05-24)
-
-
-### Bug Fixes
-
-* revert loading assets via hook ([1512a07](https://github.com/baumrock/RockAdminTweaks/commit/1512a074377327651921af7aedebc10b08b41544))
 
