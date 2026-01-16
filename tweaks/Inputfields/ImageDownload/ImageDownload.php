@@ -29,7 +29,7 @@ class ImageDownload extends Tweak
         $class = $event->arguments(3); // class to use on all returned actions
         $a = $event->return; // array
         $icon = wireIconMarkup('download');
-        $a['download'] = "<a class='$class' href='$image->url' download>$icon</a>";
+        $a['download'] = "<a class='$class gridImage__trash' href='$image->url' download>$icon</a>";
         $event->return = $a;
       }
     );
@@ -40,7 +40,7 @@ class ImageDownload extends Tweak
         $class = $event->arguments(3); // class(es) to use on all returned actions
         $buttons = $event->return; // array, indexed by action name
         $icon = wireIconMarkup('download');
-        $buttons['download'] = "<button class='$class' type='button'><a download href='$image->url'>$icon Download</a></button>";
+        $buttons['download'] = "<button class='$class gridImage__trash' type='button'><a download href='$image->url'>$icon Download</a></button>";
         $event->return = $buttons;
       }
     );
