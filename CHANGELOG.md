@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/baumrock/RockAdminTweaks/compare/v1.13.0...v1.13.1) (2026-01-16)
+
+
+### Bug Fixes
+
+* styling of image download button when image is trashed [#21](https://github.com/baumrock/RockAdminTweaks/issues/21) ([8c3ed35](https://github.com/baumrock/RockAdminTweaks/commit/8c3ed3569793a3f31a7e5fe460b7390b18a36212))
+
 ## [1.13.0](https://github.com/baumrock/RockAdminTweaks/compare/v1.12.0...v1.13.0) (2025-08-02)
 
 
@@ -30,13 +37,4 @@
 ### Features
 
 * add tweak to add modal param to pagelist links ([46871fe](https://github.com/baumrock/RockAdminTweaks/commit/46871fe5880aba630d6c5f5a073ee68066f6d3ef))
-
-## [1.9.3](https://github.com/baumrock/RockAdminTweaks/compare/v1.9.2...v1.9.3) (2024-07-22)
-
-
-### Bug Fixes
-
-* add check for originalTitle before strlen() ([b8382ae](https://github.com/baumrock/RockAdminTweaks/commit/b8382ae271bbeb6d6f2181f66557d3842a9ec9d6))
-* quickadd causing error when creating new users ([f794d6b](https://github.com/baumrock/RockAdminTweaks/commit/f794d6bd03a80ff0924c3d16f38dbcf91df4ac53))
-* restore original version ([96a74d1](https://github.com/baumrock/RockAdminTweaks/commit/96a74d1b9876b1369a25034c5219975df077b6fe))
 
