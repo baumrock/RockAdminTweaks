@@ -23,10 +23,18 @@ function initAsmSelectBox(inputfield_id) {
     $asmSelect.select2(asmSelect2Config);
 }
 
+// from AdminOnSteroids: carry the saved placeholder over when select2 is re-initialized
+function restoreAsmSelectBoxPlaceholder($asm, config) {
+    if ($asm.parent().find('[data-asm-placeholder]').length) {
+        config.placeholder = $asm.parent().find('[data-asm-placeholder]').attr('data-asm-placeholder');
+    }
+}
+
 $(document).ready(function () {
 
-    var select2Config = {}/*,
-    keepAsmSearchTerm = AsmTweaksSettings.indexOf('asmSearchBoxKeepTerm') !== -1;*/
+    var select2Config = {},
+        keepAsmSearchTerm = false, // AsmTweaksSettings.indexOf('asmSearchBoxKeepTerm') !== -1;
+        keepListOpen = false; // AsmTweaksSettings.indexOf('asmSearchBoxKeepListOpen') !== -1;
 
     $(document).on('change', '.asmSelect ~ select', function () {
 
@@ -54,8 +62,7 @@ $(document).ready(function () {
             src = event.target || event.srcElement,
             inputSelector = '.select2-search__field',
             searchTermAttr = 'data-select2-search-term',
-            searchTerm = $(inputSelector).val()/*,
-            keepListOpen = AsmTweaksSettings.indexOf('asmSearchBoxKeepListOpen') !== -1*/;
+            searchTerm = $(inputSelector).val();
 
         // select an item in select2 dropdown
         if (src.tagName === 'SELECT') {
