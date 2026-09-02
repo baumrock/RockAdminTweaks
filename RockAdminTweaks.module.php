@@ -28,6 +28,12 @@ class RockAdminTweaks extends WireData implements Module, ConfigurableModule
     $this->wire->classLoader->addNamespace("RockAdminTweaks", __DIR__ . "/classes");
     $this->tweakPathTemplates = $this->wire->config->paths->templates . $this->className . "/";
     $this->tweakPathModules = __DIR__ . "/tweaks/";
+
+    // don't load tweaks for guests (eg on the admin login screen): guests
+    // never see the tweaked UI and tweak assets can error there, because
+    // ProcessWire.config js is only fully populated for logged-in users
+    if ($this->wire->user->isGuest()) return;
+
     $this->loadTweakArray();
     $this->loadEnabledTweaks();
   }
